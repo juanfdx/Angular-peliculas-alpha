@@ -1,0 +1,75 @@
+<div class="contenedor">
+
+  <main class="form-signin">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <div class="text-center mt-2">
+        <img class="mb-4" src="./assets/img/proyector1.png" alt="" width="120" height="92">
+      </div>
+
+      <h1 class="h3 mb-3 fw-normal">Please register</h1>
+
+      <div class="form-floating">
+        <input formControlName="firstName" type="text" class="form-control" id="floatingInput1" placeholder="First name" autocomplete="off" required>
+        <label for="floatingInput1">First name</label>
+      </div>
+      <div class="row validate-indicator">
+        <div class="col text-danger">
+          <p *ngIf="checkValidField('firstName')" class="m-0">El nombre es obligatorio y mínimo 3 caracteres</p>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input formControlName="lastName" type="text" class="form-control" id="floatingInput2" placeholder="Last name" autocomplete="off" required>
+        <label for="floatingInput2">Last name</label>
+      </div>
+      <div class="row validate-indicator">
+        <div class="col text-danger">
+          <p *ngIf="checkValidField('lastName')" class="m-0">El apellido es obligatorio y mínimo 3 caracteres</p>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input formControlName="email"  type="email" class="form-control" id="floatingInput3" placeholder="Email address" autocomplete="off" required>
+        <label for="floatingInput3">Email address</label>
+      </div>
+      <div class="row validate-indicator">
+        <div class="col text-danger">
+          <p *ngIf="checkValidField('email')" class="m-0">El email es obligatorio y debe ser valido</p>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="off" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="row validate-indicator">
+        <div class="col text-danger">
+          <p *ngIf="checkValidField('password')" class="m-0">El password debe contener al menos 6 caracteres</p>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input formControlName="passwordConfirm" type="password" class="form-control" id="floatingPassword2" placeholder="Password confirm" autocomplete="off" required>
+        <label for="floatingPassword2">Password confirm</label>
+      </div>
+      <div class="row validate-indicator ultimo">
+        <div class="col text-danger">
+          <p *ngIf="checkValidField('passwordConfirm')" class="m-0">Confirmar el password es obligatorio</p>
+        </div>
+      </div>
+
+
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+    </form>
+
+    <div class="mt-4 text-center">
+    <span>
+      Have an account?
+    </span>
+      <a class="text-decoration-none" routerLink="/login">login</a>
+    </div>
+
+  </main>
+
+</div>
+

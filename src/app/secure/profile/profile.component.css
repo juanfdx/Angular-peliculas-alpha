@@ -1,0 +1,14 @@
+
+.validate-indicator {
+  height: 18px;
+}
+
+p {
+  font-size: 12px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  margin-left: calc(50% - 100px);
+}

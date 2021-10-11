@@ -1,0 +1,51 @@
+<h3 class="mt-2">Buscar películas</h3>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <div class="d-flex">
+      <input class="form-control me-2"
+             type="text"
+             placeholder="Buscar..."
+             (keyup)="search(txtTermino.value)"
+             #txtTermino>
+    </div>
+  </div>
+</div>
+
+
+<!-- card -->
+<div *ngIf="movies && movies.length !== 0" class="card mt-5">
+  <div class="card-body">
+    <!--table-->
+    <div class="table-responsive mt-2">
+      <table class="table table-striped table-sm">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Imagen</th>
+          <th>Titulo</th>
+          <th>Año</th>
+          <th>Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let movie of movies!; let i = index">
+          <td>{{ i + 1}}</td>
+          <td><img src="{{imageUrl}}{{ movie.image }}" height="50"></td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.year }}</td>
+          <td>
+            <a class="btn btn-sm btn-outline-secondary me-1">Editar</a>
+          </td>
+        </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+

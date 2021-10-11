@@ -1,0 +1,89 @@
+.contenedor {
+
+}
+
+.reviews {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 70px;
+  background-color: #2470dc;
+  /*Flex*/
+  display: flex;
+
+}
+
+.caja {
+  width: 30px;
+  height: 30px;
+  margin-left: 40px;
+  background-color: white;
+}
+
+.p-reviews {
+  color: white;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-bottom: 0px;
+  margin-top: 3px;
+}
+
+.linea {
+  width: 100%;
+  height: 2px;
+  background-color: lightgray;
+  margin-bottom: 50px;
+}
+
+.linea2 {
+  width: 100%;
+  height: 2px;
+  background-color: lightgray;
+  margin: 40px 0px;
+}
+
+.movies-box {
+  width: 100%;
+  /*height: 100%;*/
+  overflow-y: auto;
+  /*border: 1px solid lightgray;*/
+  /*flex*/
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: antiquewhite;
+}
+
+.movies {
+  width: 90%;
+  height: 90px;
+  margin: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  /*Flex*/
+  display: flex;
+  justify-content: center;
+}
+
+.movies-img {
+  width: 88px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.movies-text-container {
+  width: 100%;
+  /*background-color: #2470dc;*/
+}
+
+.movies-title {
+
+}
+
+.anuncio {
+  width: 90%;
+  height: 150px;
+  /*Flex*/
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,25 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-2">
+
+  <div *ngFor="let movie of movies" class="col">
+    <div class="card h-100">
+      <img src="{{imageUrl}}{{movie.image}}" class="card-img-top" style="height: 250px" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <p class="card-text">{{ movie.year }}</p>
+<!--        <a href="#" class="btn btn-sm btn-primary float-end">Calificar</a>-->
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">
+          <i class="bi bi-star-fill" style="font-size: 1.1rem; color: goldenrod;"></i>
+          &nbsp;<strong>{{ movie.average }}</strong>/10
+        </small>
+        <small class="text-muted float-end mt-1">
+          votes ({{ movie.ratings }})
+        </small>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

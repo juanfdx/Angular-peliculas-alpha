@@ -1,0 +1,39 @@
+<h3 class="mt-2">Crear película</h3>
+<div class="row mt-3">
+
+  <div class="card col-md-6 mt-3">
+    <div class="card-body">
+      <div class="">
+        <form [formGroup]="movieForm" (ngSubmit)="submit()">
+          <div class="mb-1">
+            <label class="form-label mb-0">Titulo</label>
+            <input formControlName="title" type="text" class="form-control">
+            <div class="row validate-indicator">
+              <div class="col text-danger">
+                <p *ngIf="checkValidField('title')" class="m-0">El titulo es obligatorio</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label mb-0">Año</label>
+            <input formControlName="year" type="text" class="form-control">
+            <div class="row validate-indicator">
+              <div class="col text-danger">
+                <p *ngIf="checkValidField('year')" class="m-0">El año es obligatorio y una fecha valida</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit"
+                  class="btn btn-outline-secondary">
+            Crear
+          </button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
