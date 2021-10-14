@@ -51,7 +51,7 @@ export class MovieCreateComponent implements OnInit {
             })
             setTimeout(() => {
               this.router.navigateByUrl('/dashboard');
-            }, 2500);
+            }, 2000);
 
           } else {
             Swal.fire('Error', res.msg, 'warning');

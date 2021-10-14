@@ -2,7 +2,7 @@
 
   <div *ngFor="let movie of movies" class="col">
     <div class="card h-100">
-      <img src="{{imageUrl}}{{movie.image}}" class="card-img-top" style="height: 250px" alt="...">
+      <img src="{{imageUrl}}{{movie.image}}" class="card-img-top" style="height: 260px" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ movie.title }}</h5>
         <p class="card-text">{{ movie.year }}</p>
@@ -14,12 +14,29 @@
           &nbsp;<strong>{{ movie.average }}</strong>/10
         </small>
         <small class="text-muted float-end mt-1">
-          votes ({{ movie.ratings }})
+          votos ({{ movie.ratings }})
         </small>
       </div>
     </div>
   </div>
 
+</div>
+
+<!--paginacion-->
+<div class="row">
+  <div class="col">
+    <nav aria-label="Page navigation example" class="my-4">
+      <ul class="pagination pagination-sm justify-content-end">
+        <li class="page-item">
+          <button (click)="cambiarPagina(-8)" class="page-link me-2" style="width: 80px">Previous</button>
+        </li>
+
+        <li class="page-item">
+          <button (click)="cambiarPagina(8)" class="page-link" style="width: 80px">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 

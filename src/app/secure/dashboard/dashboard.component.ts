@@ -14,7 +14,8 @@ import {environment} from "../../../environments/environment";
 export class DashboardComponent implements OnInit {
 
   public movies: Movie[] = [];
-  public count: number = 0;
+  public totalMovies: number = 0;
+  public desde: number = 0;
   public imageUrl = `${environment.base_url}/upload/movies/`;
 
   constructor(private moviesService: MoviesService) { }
@@ -25,11 +26,21 @@ export class DashboardComponent implements OnInit {
 
   //METHODS:
   loadMovies(): void {
-    this.moviesService.getAllMovies().subscribe( res => {
+    this.moviesService.getAllMovies(this.desde).subscribe( res => {
       this.movies = res.rows;
-      this.count = res.count;
-
+      this.totalMovies = res.count;
     })
   }
+
+  cambiarPagina( valor: number ) {
+    this.desde += valor;
+    if ( this.desde < 0 ) {
+      this.desde = 0;
+    } else if ( this.desde >= this.totalMovies ) {
+      this.desde -= valor;
+    }
+    this.loadMovies();
+  }
+
 
 }

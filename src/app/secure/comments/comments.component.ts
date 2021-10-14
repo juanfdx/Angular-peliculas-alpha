@@ -16,6 +16,7 @@ export class CommentsComponent implements OnInit {
 
   public movies: Movie[] = [];
   public totalMovies: number = 0;
+  public desde: number = 0;
   public imageUrl = `${environment.base_url}/upload/movies/`;
   private userId = parseInt(localStorage.getItem('id')!);
   public userName!: string;
@@ -51,7 +52,7 @@ export class CommentsComponent implements OnInit {
 
   //METHODS:
   loadMovies(): void {
-    this.moviesService.getAllMovies().subscribe( res => {
+    this.moviesService.getAllMovies(this.desde).subscribe( res => {
       this.movies = res.rows;
       this.totalMovies = res.count;
     })
@@ -134,6 +135,19 @@ export class CommentsComponent implements OnInit {
           }
       })
     });
+  }
+
+  cambiarPagina( valor: number ) {
+    this.desde += valor;
+
+    if ( this.desde < 0 ) {
+      this.desde = 0;
+
+    } else if ( this.desde >= this.totalMovies ) {
+      this.desde -= valor;
+    }
+
+    this.loadMovies();
   }
 
 

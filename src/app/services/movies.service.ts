@@ -14,9 +14,9 @@ export class MoviesService {
 
 
   //SERVICES:
-  //obtener todas las películas
-  getAllMovies(): Observable<any> {
-    return this.http.get<any>(`${environment.base_url}/movies`);
+  //obtener todas las películas con paginación
+  getAllMovies(desde: number = 0, limite: number = 8): Observable<any> {
+    return this.http.get<any>(`${environment.base_url}/movies?desde=${desde}&limite=${limite}`);
   }
 
   //obtener una película por su id

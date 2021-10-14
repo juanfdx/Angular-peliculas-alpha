@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit } from '@angular/core';
 
 import {Movie} from "../../../interfaces/movie.interface";
 import {environment} from "../../../../environments/environment";
@@ -11,14 +11,18 @@ import Swal from "sweetalert2";
   templateUrl: './movie-comment.component.html',
   styleUrls: ['./movie-comment.component.css']
 })
+
 export class MovieCommentComponent implements OnInit {
 
   public movies: Movie[] = [];
   public totalMovies: number = 0;
+  public desde: number = 0;
+  public limite: number = 5;
   public imageUrl = `${environment.base_url}/upload/movies/`;
   public movieSelected!: Movie;
   public allInComments!: any[];
   public movieDeleted: boolean = false;
+
 
   constructor(private moviesService: MoviesService) {}
 
@@ -26,13 +30,12 @@ export class MovieCommentComponent implements OnInit {
     this.loadMovies();
   }
 
+
   //METHODS:
   loadMovies(): void {
-    this.moviesService.getAllMovies().subscribe( res => {
+    this.moviesService.getAllMovies(this.desde, 5).subscribe( res => {
       this.movies = res.rows;
       this.totalMovies = res.count;
-      // console.log(this.movies)
-
     })
   }
 
@@ -65,6 +68,17 @@ export class MovieCommentComponent implements OnInit {
           })
       }
     });
+  }
+
+
+  cambiarPagina( valor: number ) {
+    this.desde += valor;
+    if ( this.desde < 0 ) {
+      this.desde = 0;
+    } else if ( this.desde >= this.totalMovies ) {
+      this.desde -= valor;
+    }
+    this.loadMovies();
   }
 
 }

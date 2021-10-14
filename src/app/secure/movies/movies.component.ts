@@ -14,6 +14,7 @@ export class MoviesComponent implements OnInit {
 
   public movies: Movie[] = [];
   public totalMovies: number = 0;
+  public desde: number = 0;
   public imageUrl = `${environment.base_url}/upload/movies/`;
 
   constructor(private moviesService: MoviesService) { }
@@ -25,12 +26,23 @@ export class MoviesComponent implements OnInit {
 
   //METHODS:
   loadMovies(): void {
-    this.moviesService.getAllMovies().subscribe( res => {
+    this.moviesService.getAllMovies(this.desde).subscribe( res => {
       this.movies = res.rows;
       this.totalMovies = res.count;
-      // console.log(this.movies)
-
     })
+  }
+
+  cambiarPagina( valor: number ) {
+    this.desde += valor;
+
+    if ( this.desde < 0 ) {
+      this.desde = 0;
+
+    } else if ( this.desde >= this.totalMovies ) {
+      this.desde -= valor;
+    }
+
+    this.loadMovies();
   }
 
   delete(movie: Movie): void {
