@@ -14,6 +14,7 @@ import { MovieCreateComponent } from './movies/movie-create/movie-create.compone
 import { MovieSearchComponent } from './movies/movie-search/movie-search.component';
 import { MovieCommentComponent } from './movies/movie-comment/movie-comment.component';
 import { CommentsComponent } from './comments/comments.component';
+import {Error404Component} from "./error404/error404.component";
 
 
 
@@ -30,6 +31,7 @@ import { CommentsComponent } from './comments/comments.component';
     MovieSearchComponent,
     MovieCommentComponent,
     CommentsComponent,
+    Error404Component
   ],
   exports: [
     SecureComponent

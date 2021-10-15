@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PublicComponent } from './public.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { Error404Component } from './error404/error404.component';
 
 
 
@@ -15,14 +14,12 @@ import { Error404Component } from './error404/error404.component';
     PublicComponent,
     LoginComponent,
     RegisterComponent,
-    Error404Component
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule
-
   ]
 })
 export class PublicModule { }

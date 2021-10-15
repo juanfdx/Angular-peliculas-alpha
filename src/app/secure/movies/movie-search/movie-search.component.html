@@ -35,7 +35,11 @@
           <td>{{ movie.title }}</td>
           <td>{{ movie.year }}</td>
           <td class="td-actions">
-            <a class="btn btn-sm btn-outline-secondary me-1">Seleccionar</a>
+<!-- mandamos el movie.id como parámetro opcional en la ruta  -->
+            <a [routerLink]="['/movies/comments']" [queryParams]="{ id: movie.id }"
+               class="btn btn-sm btn-outline-secondary me-1">
+              Seleccionar
+            </a>
           </td>
         </tr>
 

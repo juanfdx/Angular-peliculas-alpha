@@ -26,6 +26,8 @@ export class SecureComponent implements OnInit {
   ngOnInit(): void {
     //Tiene que existir el id y el token para poder estar en la parte segura de la app
     if (!this.userId || !this.token) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('id');
       this.router.navigateByUrl('/login');
       return;
     }

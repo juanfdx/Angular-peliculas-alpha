@@ -38,9 +38,9 @@ export class MoviesService {
   deleteMovie(id: number): Observable<any> {
     return this.http.delete(`${environment.base_url}/movies/${id}`);
   }
-  //obtener una película con sus comentarios
-  getMovieAndComments(id: number): Observable<any> {
-    return this.http.get(`${environment.base_url}/movies/${id}/comments`);
+  //obtener una película con sus comentarios y paginación
+  getMovieAndComments(id: number, desde: number = 0): Observable<any> {
+    return this.http.get(`${environment.base_url}/movies/${id}/comments?desde=${desde}`);
   }
 
   //comentar una película

@@ -5,12 +5,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './error404.component.html',
   styles: [
   ]
+
 })
 export class Error404Component implements OnInit {
+
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
