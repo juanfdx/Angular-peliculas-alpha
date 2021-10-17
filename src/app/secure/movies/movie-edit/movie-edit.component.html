@@ -40,7 +40,9 @@
         <h5 class="card-title">Avatar</h5>
         <p class="card-text">Imagen Película</p>
 
-        <img [src]="imageUrl" class="card-img-top" >
+        <img *ngIf="!imgTemp" [src]="imageUrl" class="card-img-top" >
+  <!-- se muestra la nueva imagen temporal a guardar si existe -->
+        <img *ngIf="imgTemp"  [src]="imgTemp" class="card-img-top" >
 
         <div class="mb-3 mt-4">
           <input class="form-control" type="file"

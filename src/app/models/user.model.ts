@@ -14,7 +14,13 @@ export class User {
     public role?: number,
   ) {}
 
-
+  get imagenUrl() {
+    if (this.image) {
+      return `${environment.base_url}/upload/users/${this.image}`;
+    } else {
+      return `${environment.base_url}/upload/users/no-image`;
+    }
+  }
 
 
 }

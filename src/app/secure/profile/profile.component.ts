@@ -1,12 +1,12 @@
-import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from '@angular/core';
-
-import {AuthService} from "../../services/auth.service";
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {environment} from "../../../environments/environment";
 import Swal from "sweetalert2";
 import {User} from "../../models/user.model";
-import {environment} from "../../../environments/environment";
 
+import {AuthService} from "../../services/auth.service";
 import {FileUploadService} from "../../services/file-upload.service";
+import {ImageService} from "../../services/image.service";
 
 
 @Component({
@@ -22,13 +22,13 @@ export class ProfileComponent implements OnInit {
   private userId = parseInt(localStorage.getItem('id')!);
   public uploadImage!: File;
   public imageUrl: string = ``;
-
+  public imgTemp: any;
 
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private fileUploadService: FileUploadService) {
-
+              private fileUploadService: FileUploadService,
+              private imageService: ImageService) {
   }
 
 
@@ -37,12 +37,10 @@ export class ProfileComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-
     });
 
     //se llenan los campos del usuario con sus datos
     this.loadUser(this.userId);
-
   }
 
 
@@ -52,7 +50,6 @@ export class ProfileComponent implements OnInit {
       this.user = user;
       this.profileForm.patchValue(user);
       this.imageUrl = `${environment.base_url}/upload/users/${user.image}`;
-      // console.log(this.imageUrl)
     });
   }
 
@@ -86,8 +83,22 @@ export class ProfileComponent implements OnInit {
   }
 
   //Seleccionar imagen en el input
+  // @ts-ignore
   changeImage(event: any) {
     this.uploadImage = event.target.files[0];
+    const file = event.target.files[0];
+
+    //para ver instantáneamente la imagen que vamos a guardar
+    if(!file) {
+      //si cancelamos la imagen nueva, para que muestre la anterior al momento
+      return this.imgTemp = null;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+     this.imgTemp = reader.result;
+    }
+
   }
 
   //Actualiza la imagen
@@ -108,9 +119,12 @@ export class ProfileComponent implements OnInit {
         })
       } else {
         Swal.fire('Error', res.msg, 'error');
-        
+
       }
       this.imageUrl = `${environment.base_url}/upload/users/${res.image}`;
+
+      //mandamos la imagen al imageService
+      this.imageService.sendImage(this.imageUrl);
     })
   }
 

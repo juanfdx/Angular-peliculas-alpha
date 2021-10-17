@@ -48,7 +48,10 @@
       <div class="card-body">
         <h5 class="card-title mb-3">Imagen usuario</h5>
 
-        <img [src]="imageUrl" class="card-img-top" >
+        <img *ngIf="!imgTemp" [src]="imageUrl" class="card-img-top" >
+<!-- se muestra la nueva imagen temporal a guardar si existe -->
+        <img *ngIf="imgTemp"  [src]="imgTemp" class="card-img-top" >
+
 
         <div class="mb-3 mt-4">
           <input class="form-control" type="file"

@@ -14,7 +14,9 @@ export class AuthService {
 
   public usuario!: User;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
   //token del usuario logeado
   get token(): string {

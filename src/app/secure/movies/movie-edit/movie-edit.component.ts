@@ -19,6 +19,7 @@ export class MovieEditComponent implements OnInit {
   public uploadImage!: File;
   public imageUrl: string = ``;
   private movieId: string = '';
+  public imgTemp: any;
 
 
   constructor(private fb: FormBuilder,
@@ -98,8 +99,21 @@ export class MovieEditComponent implements OnInit {
   }
 
   //Seleccionar imagen en el input
+  // @ts-ignore
   changeImage(event: any) {
     this.uploadImage = event.target.files[0];
+    const file = event.target.files[0];
+
+    //para ver instantáneamente la imagen que vamos a guardar
+    if(!file) {
+      //si cancelamos la imagen nueva, para que muestre la anterior al momento
+      return this.imgTemp = null;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      this.imgTemp = reader.result;
+    }
   }
 
   //Actualiza la imagen
