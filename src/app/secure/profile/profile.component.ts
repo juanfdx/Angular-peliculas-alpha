@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {environment} from "../../../environments/environment";
-import Swal from "sweetalert2";
-import {User} from "../../models/user.model";
-
+//services
 import {AuthService} from "../../services/auth.service";
 import {FileUploadService} from "../../services/file-upload.service";
 import {ImageService} from "../../services/image.service";
+import {ProfileNameService} from "../../services/profile-name.service";
+
+import {environment} from "../../../environments/environment";
+import {User} from "../../models/user.model";
+import Swal from "sweetalert2";
 
 
 @Component({
@@ -28,7 +30,8 @@ export class ProfileComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private fileUploadService: FileUploadService,
-              private imageService: ImageService) {
+              private imageService: ImageService,
+              private profileNameService: ProfileNameService) {
   }
 
 
@@ -67,6 +70,11 @@ export class ProfileComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
+
+            const firstName = this.profileForm.get('firstName')?.value;
+            const lastName = this.profileForm.get('lastName')?.value;
+            const completeName = `${firstName} ${lastName}`;
+            this.profileNameService.sendCompleteName(completeName);
           }
     }, error => {
           Swal.fire('Error', error.error.msg, 'error');
@@ -127,9 +135,6 @@ export class ProfileComponent implements OnInit {
       this.imageService.sendImage(this.imageUrl);
     })
   }
-
-
-
 
 }
 

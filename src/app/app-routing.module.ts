@@ -30,7 +30,6 @@ const routes: Routes = [
       { path: 'movies/:id/edit', component: MovieEditComponent },
       { path: 'movies/comments', component: MovieCommentComponent },
       { path: 'comments', component: CommentsComponent },
-
     ]
   },
   {
@@ -46,7 +45,6 @@ const routes: Routes = [
     component: SecureComponent,
     children: [
       { path: '**', component: Error404Component },
-
     ]
   },
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import {Movie} from "../../interfaces/movie.interface";
 import {MoviesService} from "../../services/movies.service";
 import {environment} from "../../../environments/environment";

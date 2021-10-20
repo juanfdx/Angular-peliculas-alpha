@@ -3,8 +3,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Movie} from "../../interfaces/movie.interface";
 import {environment} from "../../../environments/environment";
 import {MoviesService} from "../../services/movies.service";
-import Swal from "sweetalert2";
 import {AuthService} from "../../services/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-comments',
@@ -45,7 +45,6 @@ export class CommentsComponent implements OnInit {
       comment: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ?!,. ]+$/i )] ],
       userName: ''
     })
-
     this.loadMovies();
   }
 
@@ -68,7 +67,6 @@ export class CommentsComponent implements OnInit {
       return;
 
     } else {
-
       const movieId = this.movieSelected.id
       this.moviesService.commentMovie( movieId, this.commentForm.getRawValue())
         .subscribe( res => {
@@ -109,7 +107,6 @@ export class CommentsComponent implements OnInit {
       inputValue: 10
 
     }).then( objRate => {
-
       const rate = parseInt(objRate.value);
       //para evitar una respuesta falsa del sweetaler2
       if (isNaN(rate)) {
@@ -146,7 +143,6 @@ export class CommentsComponent implements OnInit {
     } else if ( this.desde >= this.totalMovies ) {
       this.desde -= valor;
     }
-
     this.loadMovies();
   }
 

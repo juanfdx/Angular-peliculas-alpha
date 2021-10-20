@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MoviesService} from "../../../services/movies.service";
 import {environment} from "../../../../environments/environment";
-import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-movie-search',
@@ -13,8 +13,7 @@ export class MovieSearchComponent implements OnInit {
   public movies!: any[];
   public imageUrl = `${environment.base_url}/upload/movies/`;
 
-  constructor(private moviesService: MoviesService,
-              private router: Router) { }
+  constructor(private moviesService: MoviesService) { }
 
   ngOnInit(): void {
   }

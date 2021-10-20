@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import Swal from "sweetalert2";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,10 +36,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     this.authService.login(this.loginForm.getRawValue())
       .subscribe( res => {
-
         this.router.navigateByUrl('/');
 
       }, (err) => {

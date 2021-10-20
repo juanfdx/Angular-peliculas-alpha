@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, OnInit } from '@angular/core';
-import {AuthService} from "../services/auth.service";
 import {Router} from "@angular/router";
-import Swal from "sweetalert2";
+import {AuthService} from "../services/auth.service";
 import {User} from "../models/user.model";
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-secure',
@@ -12,7 +13,6 @@ import {User} from "../models/user.model";
 })
 export class SecureComponent implements OnInit {
 
-
   public user!: User;
   private userId = parseInt(localStorage.getItem('id')!);
   private token = localStorage.getItem('token');
@@ -20,7 +20,6 @@ export class SecureComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router) { }
-
 
 
   ngOnInit(): void {

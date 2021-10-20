@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 import {MoviesService} from "../../../services/movies.service";
 import Swal from "sweetalert2";
-import {Router} from "@angular/router";
 
 
 @Component({

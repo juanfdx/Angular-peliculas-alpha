@@ -14,8 +14,6 @@ export class ImageService {
 
   private subject = new Subject<any>();
 
-  constructor() { }
-
   //recibe la imagen de profile.component:134
   sendImage(image: string) {
     this.subject.next(image);
@@ -29,6 +27,5 @@ export class ImageService {
   getImage(): Observable<any> {
     return this.subject.asObservable();
   }
-
 
 }

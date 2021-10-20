@@ -6,7 +6,9 @@
       <img *ngIf="!imageTemp" [src]="imageUrl">
       <img *ngIf="imageTemp" [src]="imageTemp">
     </a>
-    <a routerLink="/profile" class="p-2 text-success me-2 text-decoration-none">{{ user?.firstName }} {{ user?.lastName }}</a>
+    <a *ngIf="!completeName" routerLink="/profile" class="p-2 text-success me-2 text-decoration-none">{{ user?.firstName }} {{ user?.lastName }}</a>
+    <a *ngIf="completeName" routerLink="/profile" class="p-2 text-success me-2 text-decoration-none">{{ completeName }}</a>
+
     <a routerLink="/login" class="p-2 text-white text-decoration-none" (click)="logout()">Sign out</a>
 
   </nav>

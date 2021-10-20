@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 import {Movie} from "../../../interfaces/movie.interface";
 import {environment} from "../../../../environments/environment";
 import {MoviesService} from "../../../services/movies.service";
 import Swal from "sweetalert2";
-import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -92,7 +92,7 @@ export class MovieCommentComponent implements OnInit {
     });
   }
 
-  //paginación peliculas
+  //paginación películas
   cambiarPagina( valor: number ) {
     this.desde += valor;
     if ( this.desde < 0 ) {
