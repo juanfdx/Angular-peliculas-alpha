@@ -83,6 +83,9 @@ export class CommentsComponent implements OnInit {
               timer: 2000
             })
           }
+
+        }, error => {
+          Swal.fire('Error', error.error.msg, 'error');
         });
     }
   }
@@ -130,6 +133,10 @@ export class CommentsComponent implements OnInit {
           } else {
             Swal.fire('', res.msg, 'info');
           }
+
+      //si token no existe o no es valido
+      }, error => {
+        Swal.fire('Error', error.error.msg, 'error');
       })
     });
   }

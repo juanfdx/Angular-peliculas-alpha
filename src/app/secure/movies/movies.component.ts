@@ -62,12 +62,15 @@ export class MoviesComponent implements OnInit {
               title: `Película ${movie.title} borrada con éxito!`,
               showConfirmButton: false,
               timer: 2000
-            })
-          }
-        )
+            });
+
+        //si token no existe o no es valido
+        }, error => {
+          Swal.fire('Error', error.error.msg, 'error');
+        });
+
       }
     });
-
   }
 
 }

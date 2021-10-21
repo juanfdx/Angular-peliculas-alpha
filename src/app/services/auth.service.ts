@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   //SERVICES:
-
+  //Ingresar
   login(formData: any): Observable<any> {
     return this.http.post(`${environment.base_url}/login`, formData)
               .pipe(
@@ -67,8 +67,6 @@ export class AuthService {
       }
     })
   }
-
-
 
 
 }
