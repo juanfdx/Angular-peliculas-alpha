@@ -87,7 +87,11 @@ export class MovieEditComponent implements OnInit {
           this.router.navigateByUrl('/movies');
         }, 2000);
       }
-    })
+
+    //si token no existe o no es valido
+    }, error => {
+      Swal.fire('Error', error.error.msg, 'error');
+    });
   }
 
   //válida los campos del formulario

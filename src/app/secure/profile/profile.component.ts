@@ -76,6 +76,8 @@ export class ProfileComponent implements OnInit {
             const completeName = `${firstName} ${lastName}`;
             this.profileNameService.sendCompleteName(completeName);
           }
+
+    //si token no existe o no es valido
     }, error => {
           Swal.fire('Error', error.error.msg, 'error');
         });

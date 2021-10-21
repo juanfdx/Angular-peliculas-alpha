@@ -11,6 +11,10 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
+  //token del usuario logeado
+  get token(): string {
+    return localStorage.getItem('token') || '';
+  }
 
   //SERVICES:
   //obtener todas las películas con paginación
@@ -30,13 +34,22 @@ export class MoviesService {
 
   //actualizar una película
   updateMovie(id: number, formData: any) {
-    return this.http.put(`${environment.base_url}/movies/${id}/edit`, formData);
+    return this.http.put(`${environment.base_url}/movies/${id}/edit`, formData, {
+      headers: {
+        'x-token': this.token
+      }
+    });
   }
 
   //borrar una película
   deleteMovie(id: number): Observable<any> {
-    return this.http.delete(`${environment.base_url}/movies/${id}`);
+    return this.http.delete(`${environment.base_url}/movies/${id}`, {
+      headers: {
+        'x-token': this.token
+      }
+    });
   }
+
   //obtener una película con sus comentarios y paginación
   getMovieAndComments(id: number, desde: number = 0): Observable<any> {
     return this.http.get(`${environment.base_url}/movies/${id}/comments?desde=${desde}`);
@@ -44,12 +57,20 @@ export class MoviesService {
 
   //comentar una película
   commentMovie(id: number, formData: any ): Observable<any> {
-    return this.http.post(`${environment.base_url}/movies/${id}/comment`, formData)
+    return this.http.post(`${environment.base_url}/movies/${id}/comment`, formData, {
+      headers: {
+        'x-token': this.token
+      }
+    })
   }
 
   //calificar una película
   rateMovie(id: number, formData: any ): Observable<any> {
-    return this.http.post(`${environment.base_url}/movies/${id}/rate`, formData);
+    return this.http.post(`${environment.base_url}/movies/${id}/rate`, formData, {
+      headers: {
+        'x-token': this.token
+      }
+    });
   }
 
   //buscar películas  por título o por año
